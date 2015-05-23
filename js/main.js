@@ -1,7 +1,7 @@
 $(function () {
   $(".navbar-brand").text("Javascript Expert Project"); 
 
-  if (PUBNUB)
+  if (typeof PUBNUB !== 'undefined')
   {
     window.gamesub = PUBNUB.init({
         publish_key: 'pub-c-f8615354-2b9b-468c-b724-9f682fb8fd9d',
