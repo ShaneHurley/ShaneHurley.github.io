@@ -38,51 +38,26 @@
       </div>
     </nav>
 
-    <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
-      <div class="container">
+    <div class="container">
         <h1>Hello, world!</h1>
         <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
-      </div>
-    </div>
-
-    <div class="container">
-      <!-- Example row of columns -->
-      <div class="row">
-        <div class="col-md-4">
-          <h2>Presentation</h2>
-          <p>
-            A link to my presentation about Javascript, written in javascript.
-          </p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-          <h2>Game</h2>
-          <p>
-            A game demonstration 
-          </p>
-          <p><a class="btn btn-default" href="game.html" role="button">View details &raquo;</a></p>
-       </div>
-        <div class="col-md-4">
-          <h2>Score Board</h2>
-          <p>
-            We play games to win, see who is winning.
-          </p>
-          <p><a class="btn btn-default" href="score_board.html" role="button">View details &raquo;</a></p>
-        </div>
-      </div>
+        <p><a id='test_score' class="btn btn-primary btn-lg" href="#" role="button">Send Message&raquo;</a></p>
 
       <hr>
 
       <footer>
         <p>&copy; Shane Hurley 2015</p>
       </footer>
-    </div> <!-- /container -->        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    </div> <!-- /container -->        
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+
+        <script src="//cdn.pubnub.com/pubnub-3.7.8.min.js"></script>
+        <script>window.PUBNUB || document.write('<script src="js/vendor/pubnub-3.7.8.min.js"><\/script>')</script>
 
         <script src="js/vendor/bootstrap.min.js"></script>
 
         <script src="js/main.js"></script>
+        <script src="js/game.js"></script>
     </body>
 </html>
