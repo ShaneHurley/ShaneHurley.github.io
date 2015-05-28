@@ -379,9 +379,19 @@ Reveal.addEventListener( 'customevent', function() {
 				controls: true,
 				progress: true,
 				history: true,
-				center: true,
+        center: true,
+        parallaxBackgroundImage: '../img/reveal-parallax-1.jpg',
+        parallaxBackgroundImage: '../img/mountains.jpg',
+        parallaxBackgroundImage: '../img/building.jpg',
+        parallaxBackgroundSize: '3000px 100%', // CSS syntax, e.g. "2100px 900px"
+        // parallaxBackgroundSize: '1071px 459px', // CSS syntax, e.g. "2100px 900px"
 
-				transition: 'slide', // none/fade/slide/convex/concave/zoom
+        // Amount to move parallax background (horizontal and vertical) on slide change
+        // Number, e.g. 100
+        parallaxBackgroundHorizontal: '200',
+        parallaxBackgroundVertical: '100',
+
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
 
 				// Optional reveal.js plugins
 				dependencies: [
