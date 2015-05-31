@@ -1,3 +1,4 @@
+var fracgame;
 var game;
 
 $(function () {
@@ -10,7 +11,6 @@ $(function () {
 
 
   game = new Phaser.Game(640, 400, Phaser.AUTO, 'game', { preload: preload, create: create, update: update });
-  var fracgame;
 
   function preload() {
       game.load.baseURL = 'http://examples.phaser.io/assets/';

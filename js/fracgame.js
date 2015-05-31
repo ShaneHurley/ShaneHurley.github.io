@@ -10,6 +10,7 @@ function FractionGame(game,x,y)
   this.elapsed = 0;
   this.plays = 0;
   this.team_name = window.location.getParameter("team");
+  this.players = parseInt(window.location.getParameter("players"));
 
   this.font = "desyrel";
   this.font_size = 64;
@@ -19,19 +20,35 @@ function FractionGame(game,x,y)
   this.x = x || 0;
   this.y = y || 0;
 
+  this.message = this.game.add.bitmapText(this.x, this.y + this.font_size / 1.6 + 150, 
+      "desyrel", "Press space to begin", this.font_size);
   this.frac1 = new Fraction(this.game, this.x + 100, this.y + 150);
   this.frac2 = new Fraction(this.game, this.x + 290, this.y + 150);
-  this.relation = this.game.add.bitmapText(this.x + 225, this.y + this.font_size / 1.6 + 150, "desyrel", "?", this.font_size);
+  this.relation = this.game.add.bitmapText(this.x + 225, this.y + this.font_size / 1.6 + 150, 
+      "desyrel", "?", this.font_size);
   this.score_text = this.game.add.bitmapText(this.x + 300, this.y, this.font, "Score: 0", this.font_size);
   this.timer_text = this.game.add.bitmapText(this.x + 0, this.y, this.font, "Timer: 30", this.font_size);
+  this.kill();
 
   var fgame = this;
   this.game.input.keyboard.onPressCallback = function(key) {
+    if (fgame.mode == "game_over") return;
+
     console.log("mode: " + fgame.mode);
     if (fgame.mode == 'start' || fgame.mode == 'waiting_for_player')
     {
+      if (key != ' ') return;
+
       fgame.revive();
       fgame.plays = fgame.plays + 1;
+
+      if (fgame.plays > fgame.players)
+      {
+        fgame.mode = 'game_over';
+        fgame.kill("Game Over");
+        fgame.timer_text.kill();
+        return;
+      }
       if (fgame.mode == 'waiting_for_player')
       {
         fgame.adjust_score(30 - fgame.elapsed);
@@ -96,11 +113,16 @@ FractionGame.prototype.incorrect = function()
   this.relation.setText("?");
 }
 
-FractionGame.prototype.kill = function()
+FractionGame.prototype.kill = function(txt)
 {
       this.frac1.kill();
       this.frac2.kill();
       this.relation.kill(); 
+      if (txt)
+      {
+        this.message.setText(txt);
+      }
+      this.message.revive();
 }
 
 FractionGame.prototype.revive = function()
@@ -108,6 +130,7 @@ FractionGame.prototype.revive = function()
       this.frac1.revive();
       this.frac2.revive();
       this.relation.revive(); 
+      this.message.kill();
 }
 
 FractionGame.prototype.set_timer = function(new_time)
@@ -130,7 +153,7 @@ FractionGame.prototype.update = function()
     if (this.mode == 'playing' && this.elapsed >= 30)
     {
       this.mode = 'waiting_for_player';
-      this.kill();
+      this.kill('next player,\npress space');
       this.set_timer(6);
     }
   }
