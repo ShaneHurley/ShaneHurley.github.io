@@ -9,6 +9,18 @@ $(function () {
     });
     
   }
+
+  $("#play").click(function() { 
+    var valid = $("game-form input").map(function() { return this.checkValidity(); });
+    if (valid[0] && valid[1])
+    {
+      alert("play game");
+    }
+    else
+    {
+      return true;
+    }
+  });
 })
 
 if (!window.location.getParameter) {

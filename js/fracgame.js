@@ -12,6 +12,15 @@ function FractionGame(game,x,y)
   this.team_name = window.location.getParameter("team");
   this.players = parseInt(window.location.getParameter("players"));
 
+  gamesub.publish({
+      channel: 'scores',
+      message: {
+        team: this.team_name,
+        score: this.score,
+        play: this.plays
+      }
+  });
+
   this.font = "desyrel";
   this.font_size = 64;
 
