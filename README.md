@@ -1,2 +1,4 @@
-# jsproject
-JS Project for school
+# Sample web site
+
+Do stuff here
+
